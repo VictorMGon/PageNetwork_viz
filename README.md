@@ -5,7 +5,7 @@
 
 <h4 align="center">A prototype project to demonstrate Django, d3.js and web scraping(Scrapy) integration. It showcases the space explored by a web crawler.</h4>
 
-![A network graph](static/img1.png)
+![A network graph](static/img2.png)
 
 <p align="center">
   <a href="https://img.shields.io/badge/Crochet-2.1.1-green">
