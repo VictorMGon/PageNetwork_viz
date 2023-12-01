@@ -1,0 +1,9 @@
+**/__pycache__
+**/migrations
+*.sqlite3
+/d3testapp
+/Include
+/Lib
+/Scripts
+pyvenv.cfg
+*.tar.gz
