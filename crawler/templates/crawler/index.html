@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<body>
+<a href="/admin">Admin Panel</a>
+<a href="/">Index</a>
+<a href="/graph">Network Graph(WIP)</a>
+    {% if pages_list %}
+    <form action="/" method="post">
+        {% csrf_token %}
+        <button type="submit" name="action" value="start_scrapper">Start Scrapper(level 1)</button>
+    </form>
+    <h1>Pages Explored</h1>
+    <ul>
+        {% for page in pages_list %}
+            <li>{{page.url}}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <form action="/start_url/" method="post">
+        {% csrf_token %}
+        {{ url_form }}
+        <input type="submit">
+    </form>
+{% endif %}
+</body>
+
