@@ -1,2 +1,2 @@
 #! /bin/bash
-redis-stable/redis-server
+redis-7.2.3/src/redis-server
