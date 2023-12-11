@@ -1,9 +1,11 @@
 **/__pycache__
 **/migrations
 *.sqlite3
+/redis-7.2.3
 /d3testapp
 /Include
 /Lib
 /Scripts
 pyvenv.cfg
-*.tar.gz
+7.2.3.*
+*.rdb
