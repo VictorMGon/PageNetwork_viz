@@ -20,7 +20,7 @@ class TestSpider(scrapy.Spider):
     start_urls = []
 
     def parse(self, response):
-        cur_page = Page.objects.filter(url=response.url)
+        cur_page = Page.objects.filter(url=response.url).get()
         url_list = response.css("a::attr(href)").getall()
         for url in url_list:
             if not(Page.objects.filter(url=response.urljoin(url)).exists()):
@@ -29,11 +29,13 @@ class TestSpider(scrapy.Spider):
                 p.scrapped = False
                 p.date_scrapped = localtime()
                 p.save()
-                l = Link()
-                l.source_page = cur_page.get()
-                l.target_page = p
-                l.save()
-                yield scrapy.Request(response.urljoin(url), self.parse)
+            l = Link()
+            l.source_page = cur_page
+            l.target_page = Page.objects.get(url=response.urljoin(url))
+            l.save()
+            yield scrapy.Request(response.urljoin(url), self.parse)
+        cur_page.scrapped = True
+        cur_page.save()
 
 
 @shared_task()
